@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		F26CB1E519A28D0200611377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E419A28D0200611377 /* AppDelegate.swift */; };
 		F26CB1E819A28D0200611377 /* Locations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */; };
-		F26CB1EA19A28D0200611377 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E919A28D0200611377 /* ViewController.swift */; };
+		F26CB1EA19A28D0200611377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E919A28D0200611377 /* MapViewController.swift */; };
 		F26CB1ED19A28D0200611377 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26CB1EB19A28D0200611377 /* Main.storyboard */; };
 		F26CB1EF19A28D0200611377 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F26CB1EE19A28D0200611377 /* Images.xcassets */; };
 		F26CB1FB19A28D0200611377 /* LocationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1FA19A28D0200611377 /* LocationsTests.swift */; };
+		F26CB20519A29DB100611377 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26CB20419A29DB100611377 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +31,13 @@
 		F26CB1E319A28D0200611377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F26CB1E419A28D0200611377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F26CB1E719A28D0200611377 /* Locations.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Locations.xcdatamodel; sourceTree = "<group>"; };
-		F26CB1E919A28D0200611377 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F26CB1E919A28D0200611377 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F26CB1EC19A28D0200611377 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F26CB1EE19A28D0200611377 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F26CB1F419A28D0200611377 /* LocationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LocationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26CB1F919A28D0200611377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F26CB1FA19A28D0200611377 /* LocationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsTests.swift; sourceTree = "<group>"; };
+		F26CB20419A29DB100611377 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F26CB20519A29DB100611377 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +62,7 @@
 		F26CB1D619A28D0200611377 = {
 			isa = PBXGroup;
 			children = (
+				F26CB20419A29DB100611377 /* MapKit.framework */,
 				F26CB1E119A28D0200611377 /* Locations */,
 				F26CB1F719A28D0200611377 /* LocationsTests */,
 				F26CB1E019A28D0200611377 /* Products */,
@@ -78,8 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				F26CB1E419A28D0200611377 /* AppDelegate.swift */,
-				F26CB1E919A28D0200611377 /* ViewController.swift */,
-				F26CB1EB19A28D0200611377 /* Main.storyboard */,
+				F26CB20619A2A56F00611377 /* Models */,
+				F26CB20719A2A58300611377 /* Views */,
+				F26CB20819A2A58900611377 /* Controllers */,
 				F26CB1EE19A28D0200611377 /* Images.xcassets */,
 				F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */,
 				F26CB1E219A28D0200611377 /* Supporting Files */,
@@ -110,6 +115,29 @@
 				F26CB1F919A28D0200611377 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F26CB20619A2A56F00611377 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F26CB20719A2A58300611377 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F26CB1EB19A28D0200611377 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F26CB20819A2A58900611377 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F26CB1E919A28D0200611377 /* MapViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +189,14 @@
 				TargetAttributes = {
 					F26CB1DE19A28D0200611377 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					F26CB1F319A28D0200611377 = {
 						CreatedOnToolsVersion = 6.0;
@@ -211,7 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F26CB1EA19A28D0200611377 /* ViewController.swift in Sources */,
+				F26CB1EA19A28D0200611377 /* MapViewController.swift in Sources */,
 				F26CB1E819A28D0200611377 /* Locations.xcdatamodeld in Sources */,
 				F26CB1E519A28D0200611377 /* AppDelegate.swift in Sources */,
 			);
@@ -403,6 +439,7 @@
 				F26CB20019A28D0200611377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F26CB20119A28D0200611377 /* Build configuration list for PBXNativeTarget "LocationsTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +448,7 @@
 				F26CB20319A28D0200611377 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
