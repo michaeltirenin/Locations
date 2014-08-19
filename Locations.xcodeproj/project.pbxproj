@@ -81,12 +81,12 @@
 		F26CB1E119A28D0200611377 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
+				F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */,
 				F26CB1E419A28D0200611377 /* AppDelegate.swift */,
 				F26CB20619A2A56F00611377 /* Models */,
 				F26CB20719A2A58300611377 /* Views */,
 				F26CB20819A2A58900611377 /* Controllers */,
 				F26CB1EE19A28D0200611377 /* Images.xcassets */,
-				F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */,
 				F26CB1E219A28D0200611377 /* Supporting Files */,
 			);
 			path = Locations;
