@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F26A013719A505F6004B44E8 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26A013619A505F6004B44E8 /* Reminder.swift */; };
 		F26CB1E519A28D0200611377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E419A28D0200611377 /* AppDelegate.swift */; };
 		F26CB1E819A28D0200611377 /* Locations.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */; };
 		F26CB1EA19A28D0200611377 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26CB1E919A28D0200611377 /* MapViewController.swift */; };
@@ -27,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F26A013519A505F5004B44E8 /* Locations-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Locations-Bridging-Header.h"; sourceTree = "<group>"; };
+		F26A013619A505F6004B44E8 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		F26CB1DF19A28D0200611377 /* Locations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26CB1E319A28D0200611377 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F26CB1E419A28D0200611377 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,13 +84,13 @@
 		F26CB1E119A28D0200611377 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
-				F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */,
 				F26CB1E419A28D0200611377 /* AppDelegate.swift */,
 				F26CB20619A2A56F00611377 /* Models */,
 				F26CB20719A2A58300611377 /* Views */,
 				F26CB20819A2A58900611377 /* Controllers */,
 				F26CB1EE19A28D0200611377 /* Images.xcassets */,
 				F26CB1E219A28D0200611377 /* Supporting Files */,
+				F26A013519A505F5004B44E8 /* Locations-Bridging-Header.h */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -120,6 +123,8 @@
 		F26CB20619A2A56F00611377 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F26A013619A505F6004B44E8 /* Reminder.swift */,
+				F26CB1E619A28D0200611377 /* Locations.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				F26CB1EA19A28D0200611377 /* MapViewController.swift in Sources */,
 				F26CB1E819A28D0200611377 /* Locations.xcdatamodeld in Sources */,
 				F26CB1E519A28D0200611377 /* AppDelegate.swift in Sources */,
+				F26A013719A505F6004B44E8 /* Reminder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,10 +373,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Locations/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Locations/Locations-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -379,10 +388,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Locations/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Locations/Locations-Bridging-Header.h";
 			};
 			name = Release;
 		};
