@@ -199,6 +199,10 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         println("annLong: \(annotation.coordinate.longitude)")
         println("annTitle: \(annotation.title!)")
         println("annMess: \(annotation.subtitle!)")
+        
+//        self.navigationController.pushViewController(EditRemindersViewController(), animated: true)
+        self.performSegueWithIdentifier("ToEditReminder", sender: self)
+
     }
 
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
@@ -228,5 +232,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         
         self.mapView.setRegion(region, animated: true)
     }
+    
 }
 

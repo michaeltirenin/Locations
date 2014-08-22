@@ -37,10 +37,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         // initialize the fetched results controller
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        
         // perform fetch on appearance
         var error : NSError?
         fetchedResultsController.performFetch(&error)
@@ -48,6 +45,17 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
             println("error")
         }
     }
+    
+    // moved to viewDidLoad
+//    override func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated)
+//        // perform fetch on appearance
+//        var error : NSError?
+//        fetchedResultsController.performFetch(&error)
+//        if error != nil {
+//            println("error")
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -103,7 +111,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    // MARK: TableView Delete Rows
+    // MARK: Tableview Delete Rows
     
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         // don't need anything here, but need this method for the following to work
@@ -122,4 +130,30 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         
         return [deleteAction]
     }
+    
+    // MARK: Tableview Reorder
+    
+    @IBOutlet weak var editReminder: UIBarButtonItem!
+    @IBAction func editReminderButton(sender: UIBarButtonItem) {
+        
+        if self.tableView.editing {
+            self.tableView.setEditing(false, animated: true)
+            editReminder.title = "Edit"
+        } else {
+            self.tableView.setEditing(true, animated: true)
+            editReminder.title = "Done"
+        }
+    }
+    
+    func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView!, moveRowAtIndexPath sourceIndexPath: NSIndexPath!, toIndexPath destinationIndexPath: NSIndexPath!) {
+        var cellToMove = self.fetchedResultsController.fetchedObjects[sourceIndexPath.row] as Reminder
+        self.context.deleteObject(cellToMove)
+        self.context.insertObject(cellToMove)
+        self.context.save(nil)
+    }
+    
 }
