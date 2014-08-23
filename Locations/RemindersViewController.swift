@@ -78,7 +78,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
     
     func configureCell(cell: UITableViewCell, forIndexPath indexPath: NSIndexPath) {
         var reminder = self.fetchedResultsController.fetchedObjects[indexPath.row] as Reminder
-        cell.textLabel.text = reminder.message
+        cell.textLabel.text = reminder.reminderMessage
         cell.detailTextLabel.text = "(" + reminder.latitude.stringValue + ", " + reminder.longitude.stringValue + ")"
     }
 

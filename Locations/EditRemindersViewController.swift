@@ -9,49 +9,105 @@
 import UIKit
 import CoreData
 
-class EditRemindersViewController: UIViewController, UITextFieldDelegate {
+class EditRemindersViewController: UIViewController, UITextFieldDelegate, NSFetchedResultsControllerDelegate {
 
     var context : NSManagedObjectContext!
-
+    var fetchedResultsController : NSFetchedResultsController!
+    
+//    var reminder : Reminder!
+    
     @IBOutlet weak var coordinatesLabel: UILabel!
     @IBOutlet weak var reminderTitleTextField: UITextField!
     @IBOutlet weak var reminderMessageTextField: UITextField!
-
-    @IBAction func saveButton(sender: UIBarButtonItem) {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Edit Reminder Messages"
-
-        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        self.context = appDelegate.managedObjectContext
-
+        
         self.reminderTitleTextField.delegate = self
         self.reminderMessageTextField.delegate = self
 
-        self.coordinatesLabel.text = "testlabel"
-        self.reminderTitleTextField.text = "testttitle"
-        self.reminderMessageTextField.text = "testmessage"
+        // get MoC from app delegate
+        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.context = appDelegate.managedObjectContext
         
-    }
+        var request = NSFetchRequest(entityName: "Reminder")
+        request.returnsObjectsAsFaults = false
+        
+        var results : NSArray = context.executeFetchRequest(request, error: nil)
+        
+        if results.count > 0 {
+            for res in results {
+                println(res)
+            }
+        } else {
+            println("error")
+        }
+        
+//        // get the MOC from app delegate
+//        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+//        self.context = appDelegate.managedObjectContext
+//        
+//        // setup the fetched results controller
+//        var request = NSFetchRequest(entityName: "Reminder")
+//        let sort = NSSortDescriptor(key: "reminderTitle", ascending: true)
+//        
+//        // add sort to the request
+//        request.sortDescriptors = [sort]
+//        request.fetchBatchSize = 20
+//        
+//        // initialize the fetched results controller
+//        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: self.context, sectionNameKeyPath: nil, cacheName: nil)
+//        self.fetchedResultsController.delegate = self
+//        
+//        // perform fetch on appearance
+//        var error : NSError?
+//        fetchedResultsController.performFetch(&error)
+//        if error != nil {
+//            println("error")
+//        }
+        
+//        self.reminderTitleTextField.text = self.fetchedResultsController.fetchedObjects.valueForKey("reminderTitle") as Reminder
+//        
+//        self.reminderTitleTextField.text = self.fetchedResultsController.fetchedObjects.valueForKey("reminderTitle")
+//        self.coordinatesLabel.text = "(" + self.reminder.latitude.stringValue + ", " + self.reminder.longitude.stringValue + ")"
+//        self.reminderTitleTextField.text = self.reminder.reminderTitle
+//        self.reminderMessageTextField.text = self.reminder.reminderMessage
+        
+//        self.coordinatesLabel.text = "asdf"
+//        self.reminderTitleTextField.text = "aasdfsdf"
+//        self.reminderMessageTextField.text = "asdasdfasd"
 
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func saveButton(sender: UIBarButtonItem) {
+ 
+        var appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.context = appDelegate.managedObjectContext
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        var editReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
+        editReminder.reminderTitle = self.reminderTitleTextField.text
+        editReminder.reminderMessage = self.reminderMessageTextField.text
+        
+//        editReminder.setValue(self.reminderTitleTextField.text, forKey: "reminderTitle")
+//        editReminder.setValue(self.reminderMessageTextField.text, forKey: "reminderMessage")
+        
+        var error : NSError?
+        self.context.save(&error)
+        if error != nil {
+            println(error?.localizedDescription)
+        }
+        
+        self.context.save(nil)
+        
+        println(editReminder)
+        
+        self.navigationController.popToRootViewControllerAnimated(true)
     }
-    */
 
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()

@@ -14,6 +14,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
     
     var context : NSManagedObjectContext!
     var fetchedResultsController : NSFetchedResultsController!
+    var reminder : Reminder!
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var latitudeTextField: UITextField!
@@ -66,7 +67,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         
         // setup fetched results controller
         var request = NSFetchRequest(entityName: "Reminder")
-        let sort = NSSortDescriptor(key: "message", ascending: true)
+        let sort = NSSortDescriptor(key: "reminderTitle", ascending: true)
         
         // add sort to the request
         request.sortDescriptors = [sort]
@@ -193,16 +194,15 @@ class MapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegat
         var newReminder = NSEntityDescription.insertNewObjectForEntityForName("Reminder", inManagedObjectContext: self.context) as Reminder
         newReminder.latitude = annotation.coordinate.latitude
         newReminder.longitude = annotation.coordinate.longitude
-        newReminder.message = annotation.subtitle!
+        newReminder.reminderTitle = annotation.title!
+        newReminder.reminderMessage = annotation.subtitle!
         
-        println("annLat: \(annotation.coordinate.latitude)")
-        println("annLong: \(annotation.coordinate.longitude)")
-        println("annTitle: \(annotation.title!)")
-        println("annMess: \(annotation.subtitle!)")
+        println("annLat: \(newReminder.latitude)")
+        println("annLong: \(newReminder.longitude)")
+        println("annTitle: \(newReminder.reminderTitle)")
+        println("annMess: \(newReminder.reminderMessage)")
         
-//        self.navigationController.pushViewController(EditRemindersViewController(), animated: true)
         self.performSegueWithIdentifier("ToEditReminder", sender: self)
-
     }
 
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
